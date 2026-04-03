@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Image from 'next/image'
 
@@ -41,6 +41,46 @@ const CRAFT_ITEMS = [
     image: '/fönfön.png',
   },
 ]
+
+function ParallaxImage({ item }: { item: { title: string; image: string } }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  })
+  
+  // We make the image container 130% height and move it from -15% to +15%
+  const y = useTransform(scrollYProgress, [0, 1], ['-15%', '15%'])
+
+  return (
+    <div
+      ref={ref}
+      className="relative w-full overflow-hidden"
+      style={{
+        aspectRatio: '16/10',
+        background: 'var(--ink)',
+      }}
+    >
+      <motion.div
+        className="absolute w-full"
+        style={{
+          height: '130%',
+          top: '-15%',
+          y,
+        }}
+      >
+        <Image
+          src={item.image}
+          alt={item.title}
+          fill
+          className="object-cover"
+          style={{ opacity: 0.9 }}
+          sizes="(max-width: 1024px) 100vw, 50vw"
+        />
+      </motion.div>
+    </div>
+  )
+}
 
 export default function DualWork() {
   const ref = useRef<HTMLElement>(null)
@@ -170,22 +210,7 @@ export default function DualWork() {
                 transition={{ duration: 0.4, ease: snappy, delay: 0.4 + i * 0.1 }}
               >
                 {/* Image */}
-                <div
-                  className="relative w-full overflow-hidden"
-                  style={{
-                    aspectRatio: '16/10',
-                    background: 'var(--ink)',
-                  }}
-                >
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover"
-                    style={{ opacity: 0.9 }}
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
+                <ParallaxImage item={item} />
 
                 {/* Text below image */}
                 <div className="mt-3">
