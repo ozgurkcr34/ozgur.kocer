@@ -89,6 +89,7 @@ export default function Hero() {
               style={{
                 fontSize: 'clamp(4rem, 14vw, 12rem)',
                 textShadow: '2px 2px 0px var(--paper), -1px -1px 0px var(--paper)',
+                color: 'var(--accent)',
               }}
             >
               ÖZGÜR
@@ -100,6 +101,7 @@ export default function Hero() {
               style={{
                 fontSize: 'clamp(4rem, 14vw, 12rem)',
                 textShadow: '2px 2px 0px var(--paper), -1px -1px 0px var(--paper)',
+                color: 'var(--accent)',
               }}
             >
               KOÇER
