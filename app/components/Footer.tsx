@@ -15,7 +15,7 @@ export default function Footer() {
           className="font-mono-accent"
           style={{ fontSize: '0.75rem', color: 'var(--divider)', letterSpacing: '0.03em' }}
         >
-          © 2026 Özgür KoçER
+          © 2026 Özgür KOÇER
         </span>
         <span
           style={{
@@ -29,18 +29,6 @@ export default function Footer() {
         </span>
       </div>
 
-      <a
-        href="#"
-        className="font-mono-accent link-underline"
-        style={{
-          fontSize: '0.7rem',
-          color: 'var(--divider)',
-          letterSpacing: '0.08em',
-          textDecoration: 'none',
-        }}
-      >
-        ↑ BAŞA DÖN
-      </a>
     </footer>
   )
 }
