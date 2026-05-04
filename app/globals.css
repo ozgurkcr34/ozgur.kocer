@@ -66,11 +66,6 @@ body {
   color: #fff;
 }
 
-::-moz-selection {
-  background: var(--accent);
-  color: #fff;
-}
-
 /* ─── SCROLLBAR (thin, minimal) ─── */
 
 ::-webkit-scrollbar {

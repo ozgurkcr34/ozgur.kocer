@@ -43,6 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="tr"
+      data-scroll-behavior="smooth"
       className={`${bebasNeue.variable} ${interTight.variable} ${jetbrainsMono.variable}`}
     >
       <body>{children}</body>
